@@ -8,7 +8,28 @@ function MaskDetection(props) {
   const webcamRef = props.webcamRef;
   const canvasRef = props.canvasRef;
 
-  const labels = ["incorrectly", "mask", "nomask"];
+  const visualConfig = {
+    labels: [
+      {
+        id: 1,
+        name: "",
+        colour: "",
+        minScore: 100.0,
+      },
+      {
+        id: 2,
+        name: "mask",
+        colour: "green",
+        minScore: 50.0,
+      },
+      {
+        id: 3,
+        name: "nomask",
+        colour: "red",
+        minScore: 50.0,
+      },
+    ],
+  };
 
   const runModel = async () => {
     const net = await tf.loadGraphModel("./mask_model/model.json");
@@ -62,7 +83,7 @@ function MaskDetection(props) {
         boxes_data,
         scores_data,
         classes_data,
-        labels,
+        visualConfig,
         valid_detections_data
       );
 
