@@ -80,6 +80,7 @@ function MaskDetection(props) {
 
   useEffect(() => {
     runModel();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div>Mask Detection</div>;
